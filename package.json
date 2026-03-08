@@ -1,0 +1,19 @@
+{
+  "name": "staa-store-ultimate-bot",
+  "version": "10.0.0",
+  "description": "STAA STORE Ultimate WhatsApp Bot - Pairing Code Version",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@whiskeysockets/baileys": "^6.5.0",
+    "@google/generative-ai": "^0.1.0",
+    "qrcode-terminal": "^0.12.0",
+    "sharp": "^0.33.0",
+    "pino": "^8.0.0",
+    "pino-pretty": "^10.0.0",
+    "node-cache": "^5.0.0",
+    "cfonts": "^3.2.0"
+  }
+}
