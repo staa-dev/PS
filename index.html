@@ -6,84 +6,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pertamina Kalkulator | Pengguna</title>
+    <title>Pertashop Kalkulator | Pengguna</title>
+    <!-- html2canvas untuk screenshot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Inter', 'Poppins', system-ui, sans-serif;
-            transition: background-color 0.4s ease-in-out, 
-                        color 0.3s ease-in-out, 
-                        border-color 0.3s ease-in-out, 
-                        box-shadow 0.3s ease-in-out,
-                        background 0.4s ease-in-out;
         }
 
+        /* ============================================ */
+        /* ROOT VARIABLES */
+        /* ============================================ */
         :root {
-            --bg-body: #0a0a0f;
-            --bg-container: #111118;
-            --container-border: #7c3aed;
-            --text-primary: #ffffff;
-            --text-secondary: #a8a8cc;
-            --text-muted: #6b6b8b;
-            --border-color: #2d2d3a;
-            --section-bg: #1a1a24;
-            --section-border: #3a3a4a;
-            --section-shadow: 0 15px 0 #0a0a12, 0 20px 30px -5px #00000080;
-            --input-bg: #12121a;
-            --input-border: #3a3a4a;
-            --input-text: #f0f0ff;
-            --operator-color: #a78bfa;
-            --btn-bg: #1e1e2a;
-            --btn-border: #4c4c6a;
-            --btn-shadow: 0 8px 0 #0c0c14;
-            --result-bg: #161620;
-            --result-border: #4c4c6a;
-            --total-bg: #161620;
-            --total-border: #7c3aed;
-            --footer-text: #6b6b8b;
-            --info-bg: #1a1a24;
-            --info-border: #4c4c6a;
-            --link-color: #a78bfa;
-            --total-row-bg: #1e1e2a;
-            --total-value-bg: #2a2a36;
-            --accent-purple: #7c3aed;
-            --accent-purple-light: #a78bfa;
-            --accent-purple-dark: #5b21b6;
+            --bg-body: #0c0c14;
+            --bg-container: #14141f;
+            --bg-card: #1c1c2e;
+            --bg-input: #11111e;
+            --bg-elevated: #22223a;
+            
+            --text-primary: #f0f0ff;
+            --text-secondary: #a8a8d0;
+            --text-muted: #6b6b90;
+            --text-white: #ffffff;
+            
+            --accent-1: #6c3ce0;
+            --accent-2: #8b5cf6;
+            --accent-3: #a78bfa;
+            --accent-4: #6366f1;
+            --accent-glow: rgba(107, 60, 224, 0.25);
+            --accent-glow-strong: rgba(107, 60, 224, 0.4);
+            
+            --border-color: #2a2a42;
+            --border-light: #3a3a5a;
+            
+            --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+            --shadow-glow: 0 0 40px rgba(107, 60, 224, 0.12);
+            
+            --radius-sm: 12px;
+            --radius-md: 18px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --radius-full: 9999px;
+            
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .light-mode {
-            --bg-body: #f5f5fa;
+            --bg-body: #f0f0f8;
             --bg-container: #ffffff;
-            --container-border: #7c3aed;
+            --bg-card: #f5f5fe;
+            --bg-input: #ffffff;
+            --bg-elevated: #e8e8f4;
+            
             --text-primary: #1a1a2e;
-            --text-secondary: #4b4b6b;
-            --text-muted: #6b6b8b;
-            --border-color: #d8d8e6;
-            --section-bg: #f0f0f8;
-            --section-border: #c4c4dc;
-            --section-shadow: 0 10px 0 #d0d0e0, 0 15px 25px -8px #7c3aed40;
-            --input-bg: #ffffff;
-            --input-border: #c4c4dc;
-            --input-text: #1a1a2e;
-            --operator-color: #7c3aed;
-            --btn-bg: #e8e8f2;
-            --btn-border: #b4b4d0;
-            --btn-shadow: 0 8px 0 #c0c0d4;
-            --result-bg: #f8f8ff;
-            --result-border: #b4b4d0;
-            --total-bg: #f0f0fa;
-            --total-border: #7c3aed;
-            --footer-text: #6b6b8b;
-            --info-bg: #f0f0f8;
-            --info-border: #b4b4d0;
-            --link-color: #7c3aed;
-            --total-row-bg: #e8e8f2;
-            --total-value-bg: #d8d8ea;
-            --accent-purple: #7c3aed;
-            --accent-purple-light: #a78bfa;
-            --accent-purple-dark: #5b21b6;
+            --text-secondary: #4a4a6e;
+            --text-muted: #7a7a9e;
+            --text-white: #1a1a2e;
+            
+            --border-color: #d4d4e8;
+            --border-light: #e4e4f2;
+            
+            --shadow-sm: 0 4px 16px rgba(107, 60, 224, 0.06);
+            --shadow-md: 0 8px 32px rgba(107, 60, 224, 0.08);
+            --shadow-lg: 0 16px 48px rgba(107, 60, 224, 0.1);
+            --shadow-glow: 0 0 40px rgba(107, 60, 224, 0.05);
+            
+            --accent-glow: rgba(107, 60, 224, 0.08);
+            --accent-glow-strong: rgba(107, 60, 224, 0.15);
         }
 
         body {
@@ -93,92 +87,112 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
+            transition: var(--transition);
         }
 
         .container {
-            max-width: 720px;
+            max-width: 680px;
             width: 100%;
             background: var(--bg-container);
-            border-radius: 48px;
-            padding: 28px;
-            box-shadow: 0 30px 60px -15px #000000c0, 0 0 0 1px rgba(124, 58, 237, 0.2) inset;
-            border-bottom: 3px solid var(--accent-purple);
+            border-radius: var(--radius-xl);
+            padding: 24px 24px 20px;
+            box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255,255,255,0.03);
+            border: 1px solid var(--border-color);
             position: relative;
-            overflow: hidden;
+            transition: var(--transition);
         }
 
         .container::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent-purple-dark), var(--accent-purple), var(--accent-purple-light));
-            z-index: 1;
-            transition: background 0.4s ease-in-out;
+            top: -1px;
+            left: -1px;
+            right: -1px;
+            bottom: -1px;
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-3), var(--accent-4));
+            background-size: 300% 300%;
+            border-radius: var(--radius-xl);
+            z-index: -1;
+            opacity: 0.2;
+            animation: borderGlow 6s ease-in-out infinite;
         }
 
+        @keyframes borderGlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* ============================================ */
+        /* HEADER */
+        /* ============================================ */
         .header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-            gap: 15px;
-            position: relative;
-            z-index: 2;
+            margin-bottom: 8px;
+            gap: 12px;
         }
 
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
         }
 
-        .pertamina-logo-circle {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent-purple-dark), var(--accent-purple), var(--accent-purple-light));
+        .logo-wrapper {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-sm);
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 10px rgba(124, 58, 237, 0.3);
+            box-shadow: 0 4px 12px var(--accent-glow-strong);
             overflow: hidden;
+            flex-shrink: 0;
         }
 
-        .pertamina-logo-circle img {
+        .logo-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 50%;
         }
 
-        .pertamina-text {
-            font-size: 1.6rem;
-            font-weight: 600;
+        .brand-text {
+            font-size: 1.2rem;
+            font-weight: 700;
             color: var(--text-primary);
-            letter-spacing: 1px;
+            letter-spacing: 0.3px;
+        }
+
+        .brand-text span {
+            font-weight: 300;
+            color: var(--text-secondary);
         }
 
         .theme-toggle {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            background: var(--bg-card);
+            padding: 3px 4px 3px 12px;
+            border-radius: var(--radius-full);
+            border: 1px solid var(--border-color);
         }
 
         .toggle-label {
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: 0.7rem;
             font-weight: 500;
+            letter-spacing: 0.3px;
         }
 
         .switch {
             position: relative;
             display: inline-block;
-            width: 60px;
-            height: 30px;
+            width: 40px;
+            height: 22px;
+            flex-shrink: 0;
         }
 
         .switch input {
@@ -194,156 +208,176 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: var(--section-bg);
-            transition: background-color 0.4s ease-in-out, border-color 0.3s ease;
-            border-radius: 30px;
-            box-shadow: inset 0 2px 5px #00000080;
-            border: 1px solid var(--accent-purple);
+            background: var(--bg-input);
+            border-radius: var(--radius-full);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
         }
 
         .slider:before {
             position: absolute;
             content: "🌙";
-            height: 24px;
-            width: 24px;
-            left: 3px;
+            height: 16px;
+            width: 16px;
+            left: 2px;
             bottom: 2px;
-            background: var(--accent-purple);
-            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), 
-                        background-color 0.4s ease,
-                        content 0.2s ease;
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 14px;
+            font-size: 10px;
             line-height: 1;
             color: white;
-        }
-
-        input:checked + .slider {
-            background: var(--section-bg);
-            border-color: var(--accent-purple-light);
+            transition: var(--transition);
+            box-shadow: 0 2px 8px var(--accent-glow-strong);
         }
 
         input:checked + .slider:before {
             content: "☀️";
-            transform: translateX(30px);
-            background: var(--accent-purple-light);
+            transform: translateX(18px);
         }
 
-        .subtitle {
+        /* JUDUL UTAMA - BESAR DI TENGAH */
+        .main-title {
             text-align: center;
-            color: var(--text-secondary);
-            font-weight: 400;
-            font-size: 0.9rem;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 18px;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
+            padding: 8px 0 6px;
+            margin-bottom: 10px;
         }
 
-        /* INFO HARGA DARI GITHUB */
+        .main-title h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-3), var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 60px rgba(107, 60, 224, 0.1);
+        }
+
+        .main-title .sub {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 2px;
+            -webkit-text-fill-color: var(--text-secondary);
+        }
+
+        /* ============================================ */
+        /* HARGA INFO */
+        /* ============================================ */
         .harga-info {
-            background: var(--info-bg);
-            border: 1px solid var(--accent-purple);
-            border-radius: 40px;
-            padding: 16px 22px;
-            margin-bottom: 25px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 10px 16px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 15px;
-            box-shadow: 0 4px 12px #00000060, inset 0 1px 4px rgba(124, 58, 237, 0.2);
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .harga-info:hover {
+            border-color: var(--accent-3);
         }
 
         .harga-label {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             color: var(--text-secondary);
-            font-size: 0.95rem;
+            font-size: 0.8rem;
+            font-weight: 500;
         }
 
         .harga-label .icon {
-            font-size: 1.6rem;
-            color: var(--accent-purple);
+            font-size: 1.2rem;
         }
 
         .harga-value-box {
             display: flex;
             align-items: center;
-            gap: 8px;
-            background: var(--input-bg);
-            padding: 8px 20px;
-            border-radius: 40px;
-            border: 1px solid var(--accent-purple);
+            gap: 4px;
+            background: var(--bg-input);
+            padding: 4px 14px;
+            border-radius: var(--radius-full);
+            border: 1px solid var(--border-color);
         }
 
         .harga-value {
-            font-size: 1.6rem;
-            font-weight: 600;
-            color: var(--accent-purple-light);
+            font-size: 1.2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-2), var(--accent-3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .harga-unit {
-            font-size: 1rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
+            font-weight: 500;
         }
 
         .harga-update {
-            font-size: 0.8rem;
+            font-size: 0.65rem;
             color: var(--text-muted);
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 4px;
+            background: var(--bg-input);
+            padding: 3px 10px;
+            border-radius: var(--radius-full);
+            border: 1px solid var(--border-color);
         }
 
-        .harga-update .icon {
-            font-size: 0.9rem;
-            color: var(--accent-purple-light);
-        }
-
+        /* ============================================ */
+        /* INFO DESIMAL */
+        /* ============================================ */
         .info-desimal {
-            background: var(--info-bg);
-            border: 1px solid var(--info-border);
-            border-radius: 40px;
-            padding: 16px 22px;
-            margin-bottom: 30px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 10px 16px;
+            margin-bottom: 16px;
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: 0.75rem;
             display: flex;
             align-items: center;
-            gap: 14px;
-            box-shadow: 0 4px 12px #00000060, inset 0 1px 4px rgba(124, 58, 237, 0.2);
+            gap: 10px;
+            transition: var(--transition);
         }
 
         .info-desimal .icon {
-            font-size: 2rem;
-            color: var(--accent-purple);
+            font-size: 1.4rem;
+            flex-shrink: 0;
         }
 
         .info-desimal strong {
-            color: var(--accent-purple-light);
+            color: var(--accent-3);
             font-weight: 600;
         }
 
+        /* ============================================ */
+        /* SECTION CARDS */
+        /* ============================================ */
         .section {
-            background: var(--section-bg);
-            border: 1px solid var(--section-border);
-            border-radius: 36px;
-            padding: 22px;
-            margin-bottom: 30px;
-            box-shadow: var(--section-shadow), inset 0 1px 4px rgba(124, 58, 237, 0.2);
-            transform: translateY(0) perspective(800px) rotateX(0.8deg);
-            transition: all 0.15s ease;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 16px 18px 18px;
+            margin-bottom: 16px;
+            transition: var(--transition);
         }
 
         .section:hover {
-            transform: translateY(-2px) perspective(800px) rotateX(0.5deg);
-            border-color: var(--accent-purple);
-            box-shadow: 0 18px 0 #0a0a12, 0 28px 40px -5px #00000080, inset 0 1px 8px rgba(124, 58, 237, 0.3);
+            border-color: var(--accent-3);
+            box-shadow: var(--shadow-sm), var(--shadow-glow);
         }
 
         .section-header {
@@ -351,380 +385,826 @@
             align-items: center;
             gap: 10px;
             border-bottom: 1px solid var(--border-color);
-            padding-bottom: 15px;
-            margin-bottom: 20px;
+            padding-bottom: 10px;
+            margin-bottom: 14px;
         }
 
-        .section-header .emoji {
-            font-size: 2rem;
-            color: var(--accent-purple);
+        .section-header .badge-step {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: white;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px var(--accent-glow-strong);
         }
 
         .section-header .title {
-            font-size: 1.25rem;
+            font-size: 0.95rem;
             font-weight: 600;
             color: var(--text-primary);
-            letter-spacing: 1px;
+        }
+
+        .section-header .title span {
+            color: var(--text-muted);
+            font-weight: 400;
+            font-size: 0.8rem;
         }
 
         .input-row {
             display: flex;
             align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
+            gap: 8px;
+            margin-bottom: 12px;
         }
 
         .input-group {
-            flex: 1 1 160px;
+            flex: 1;
+            min-width: 0;
         }
 
         .input-group label {
             display: block;
-            color: var(--text-secondary);
+            color: var(--text-muted);
             font-weight: 500;
-            font-size: 0.7rem;
-            letter-spacing: 1px;
-            margin-bottom: 6px;
+            font-size: 0.6rem;
+            letter-spacing: 0.8px;
+            margin-bottom: 3px;
             text-transform: uppercase;
         }
 
         .input-group input {
             width: 100%;
-            padding: 14px 16px;
-            background: var(--input-bg);
-            border: 1px solid var(--input-border);
-            border-radius: 40px;
-            font-size: 1rem;
-            font-weight: 400;
-            color: var(--input-text);
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+            padding: 8px 12px;
+            background: var(--bg-input);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-primary);
             outline: none;
             text-align: right;
+            transition: var(--transition);
+            min-height: 38px;
         }
 
         .input-group input:focus {
-            border-color: var(--accent-purple);
+            border-color: var(--accent-2);
+            box-shadow: 0 0 0 3px var(--accent-glow);
         }
 
         .input-group input[readonly] {
-            background: var(--section-bg);
-            border-color: var(--accent-purple);
-            color: var(--text-secondary);
+            background: var(--bg-elevated);
+            border-color: var(--accent-1);
+            color: var(--accent-3);
+            cursor: default;
         }
 
         .operator {
-            font-size: 2rem;
-            font-weight: 600;
-            color: var(--operator-color);
-            min-width: 40px;
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: var(--accent-3);
+            min-width: 28px;
             text-align: center;
+            opacity: 0.6;
+            flex-shrink: 0;
         }
 
         .btn-hitung {
-            background: var(--btn-bg);
-            border-radius: 60px;
-            padding: 15px 25px;
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            border: none;
+            border-radius: var(--radius-full);
+            padding: 10px 16px;
             font-weight: 600;
-            font-size: 1rem;
-            color: var(--text-primary);
-            border: 1px solid var(--btn-border);
-            box-shadow: var(--btn-shadow), 0 8px 20px black;
+            font-size: 0.8rem;
+            color: white;
+            box-shadow: 0 4px 16px var(--accent-glow-strong);
             cursor: pointer;
             width: 100%;
             text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
 
-        .btn-hitung.small {
-            padding: 12px;
-            font-size: 0.9rem;
+        .btn-hitung::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+            transition: 0.5s;
+        }
+
+        .btn-hitung:hover::before {
+            left: 100%;
+        }
+
+        .btn-hitung:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 24px var(--accent-glow-strong);
         }
 
         .btn-hitung:active {
-            transform: translateY(4px);
-            box-shadow: 0 4px 0 #0c0c14;
+            transform: translateY(0px);
         }
 
         .result-card {
-            background: var(--result-bg);
-            border-radius: 28px;
-            padding: 20px;
-            margin-top: 18px;
-            border: 1px solid var(--result-border);
-            box-shadow: inset 0 -2px 0 var(--border-color), 0 10px 18px #000000e0;
-            transform: perspective(600px) rotateX(0.6deg);
+            background: var(--bg-input);
+            border-radius: var(--radius-md);
+            padding: 12px 16px;
+            margin-top: 12px;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .result-card:hover {
+            border-color: var(--accent-3);
         }
 
         .result-label {
             color: var(--text-muted);
-            font-size: 0.7rem;
-            letter-spacing: 2px;
+            font-size: 0.6rem;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
+            font-weight: 600;
         }
 
         .result-value-wrapper {
             display: flex;
-            align-items: center;
+            align-items: baseline;
             justify-content: flex-end;
-            gap: 5px;
+            gap: 4px;
         }
 
         .result-value {
-            font-size: 2.3rem;
-            font-weight: 500;
+            font-size: 1.8rem;
+            font-weight: 600;
             color: var(--text-primary);
             word-break: break-word;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .result-unit {
-            font-size: 1.5rem;
+            font-size: 1rem;
             font-weight: 400;
-            color: var(--accent-purple-light);
-            margin-left: 5px;
+            color: var(--accent-3);
+            -webkit-text-fill-color: var(--accent-3);
         }
 
         .result-detail {
             color: var(--text-muted);
             border-top: 1px solid var(--border-color);
-            margin-top: 8px;
-            padding-top: 8px;
-            font-size: 0.9rem;
+            margin-top: 6px;
+            padding-top: 6px;
+            font-size: 0.75rem;
+            text-align: right;
         }
 
         .link-arrow {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 16px;
-            font-size: 1.3rem;
-            font-weight: 400;
-            color: var(--accent-purple-light);
-            margin: 5px 0 15px;
+            gap: 10px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin: -2px 0 8px;
+            opacity: 0.5;
         }
 
         .link-arrow .arrow {
-            font-size: 2rem;
-            color: var(--accent-purple);
+            font-size: 1.2rem;
+            color: var(--accent-3);
+            opacity: 0.6;
         }
 
+        /* ============================================ */
+        /* TOTAL SECTION - RINGKASAN */
+        /* ============================================ */
         .total-section {
-            background: var(--total-bg);
-            border: 1px solid var(--total-border);
-            border-radius: 48px;
-            padding: 24px;
-            margin: 30px 0 20px;
-            box-shadow: 0 20px 0 #0a0a12, 0 30px 40px -5px black, inset 0 -2px 8px rgba(124, 58, 237, 0.2);
-            transform: perspective(1000px) rotateX(1deg);
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 0;
+            margin: 20px 0 14px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .total-section:hover {
+            border-color: var(--accent-3);
+            box-shadow: var(--shadow-lg), var(--shadow-glow);
+        }
+
+        .total-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-1), var(--accent-3), var(--accent-4));
+            background-size: 200% 100%;
+            animation: shimmerTotal 4s ease-in-out infinite;
+        }
+
+        @keyframes shimmerTotal {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .total-inner {
+            padding: 18px 20px 20px;
         }
 
         .total-header {
             display: flex;
-            gap: 12px;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 10px;
+            margin-bottom: 14px;
             border-bottom: 1px solid var(--border-color);
-            padding-bottom: 12px;
-            margin-bottom: 20px;
-            color: var(--text-primary);
-            font-weight: 600;
         }
 
         .total-header .emoji {
-            font-size: 2rem;
-            color: var(--accent-purple);
+            font-size: 1.4rem;
         }
 
-        .total-content {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
-
-        .total-row {
-            background: var(--total-row-bg);
-            border-radius: 60px;
-            padding: 18px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 7px 0 #0a0a12, 0 10px 15px black;
-        }
-
-        .total-label {
-            color: var(--text-secondary);
-            font-weight: 400;
-        }
-
-        .total-value-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .total-value {
-            background: var(--total-value-bg);
-            padding: 8px 25px;
-            border-radius: 60px;
-            font-weight: 500;
+        .total-header .title {
+            font-size: 1rem;
+            font-weight: 700;
             color: var(--text-primary);
+        }
+
+        .total-header .badge-total {
+            margin-left: auto;
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            color: white;
+            font-size: 0.55rem;
+            font-weight: 700;
+            padding: 3px 12px;
+            border-radius: var(--radius-full);
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 12px var(--accent-glow-strong);
+        }
+
+        /* RINGKASAN DENGAN METERAN */
+        .total-meter {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .total-meter-item {
+            background: var(--bg-input);
+            border-radius: var(--radius-sm);
+            padding: 8px 12px;
             border: 1px solid var(--border-color);
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5), 0 5px 0 #0a0a12;
-            font-size: 0.95rem;
+            text-align: center;
         }
 
-        .total-unit {
-            font-size: 0.95rem;
+        .total-meter-item .label {
+            font-size: 0.55rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-weight: 600;
+        }
+
+        .total-meter-item .value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-top: 2px;
+        }
+
+        .total-meter-item .value small {
+            font-size: 0.7rem;
             font-weight: 400;
-            color: var(--accent-purple-light);
-            margin-left: 2px;
+            color: var(--text-muted);
         }
 
-        .total-kali {
+        .total-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .total-card {
+            background: var(--bg-input);
+            border-radius: var(--radius-md);
+            padding: 12px 14px;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .total-card:hover {
+            border-color: var(--accent-3);
+        }
+
+        .total-card .label {
+            font-size: 0.55rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+        }
+
+        .total-card .value-wrap {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 25px;
-            font-size: 2rem;
-            font-weight: 500;
-            color: var(--accent-purple-light);
+            align-items: baseline;
+            gap: 4px;
+            flex-wrap: wrap;
         }
 
-        .harga-unit {
+        .total-card .value {
             font-size: 1.2rem;
-            color: var(--text-secondary);
-            margin-left: 5px;
+            font-weight: 700;
+            color: var(--text-primary);
         }
 
-        .total-result {
-            background: var(--total-bg);
-            border-radius: 60px;
-            padding: 18px 25px;
+        .total-card .unit {
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+
+        .total-card .sub-info {
+            font-size: 0.6rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .total-card.accent {
+            border-color: var(--accent-2);
+            background: linear-gradient(135deg, var(--bg-input), rgba(107, 60, 224, 0.04));
+        }
+
+        .total-card.accent .value {
+            background: linear-gradient(135deg, var(--accent-2), var(--accent-3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .total-divider {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            border: 1px solid var(--total-border);
-            box-shadow: 0 12px 0 #0a0a12, 0 20px 30px black;
+            justify-content: center;
+            gap: 12px;
+            padding: 2px 0 10px;
+        }
+
+        .total-divider .line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-2), transparent);
+            opacity: 0.2;
+        }
+
+        .total-divider .icon-multiply {
+            font-size: 1.2rem;
+            color: var(--accent-3);
+            font-weight: 300;
+        }
+
+        .total-divider .harga-badge {
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            color: white;
+            padding: 4px 16px;
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
+            font-weight: 700;
+            box-shadow: 0 4px 16px var(--accent-glow-strong);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .total-divider .harga-badge .unit {
+            font-size: 0.55rem;
+            font-weight: 400;
+            opacity: 0.8;
+        }
+
+        .total-hero {
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            border-radius: var(--radius-md);
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             flex-wrap: wrap;
             gap: 10px;
+            box-shadow: 0 6px 24px var(--accent-glow-strong);
+            position: relative;
+            overflow: hidden;
         }
 
-        .total-result .label {
-            color: var(--text-secondary);
-            font-weight: 500;
-            font-size: 1.2rem;
+        .total-hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -10%;
+            width: 150px;
+            height: 150px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            pointer-events: none;
         }
 
-        .total-result .value {
-            font-size: 1.7rem;
-            font-weight: 500;
-            color: var(--text-primary);
-            word-break: break-word;
+        .total-hero .label {
+            font-size: 0.6rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.8);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .btn-reset {
-            background: var(--section-bg);
+        .total-hero .label .icon {
+            font-size: 1rem;
+        }
+
+        .total-hero .value-wrap {
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
+        }
+
+        .total-hero .value {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 2px 16px rgba(0,0,0,0.15);
+        }
+
+        /* ============================================ */
+        /* SHARE BUTTON - KHUSUS RINGKASAN */
+        /* ============================================ */
+        .share-buttons {
+            display: flex;
+            gap: 10px;
+            margin: 14px 0 8px;
+        }
+
+        .share-buttons .btn-share {
+            flex: 1;
+            padding: 10px 16px;
+            border-radius: var(--radius-full);
             border: 1px solid var(--border-color);
-            border-radius: 60px;
-            padding: 15px;
+            background: var(--bg-card);
             color: var(--text-secondary);
             font-weight: 600;
-            letter-spacing: 2px;
-            box-shadow: 0 8px 0 #0a0a12, 0 8px 16px black;
+            font-size: 0.75rem;
             cursor: pointer;
-            width: 100%;
-            margin: 20px 0 10px;
-            text-transform: uppercase;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
-        .btn-reset:active {
-            transform: translateY(4px);
-            box-shadow: 0 4px 0 #0a0a12;
+        .share-buttons .btn-share:hover {
+            border-color: var(--accent-3);
+            color: var(--text-primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .share-buttons .btn-share.primary {
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            border-color: var(--accent-2);
+            color: white;
+            box-shadow: 0 4px 16px var(--accent-glow-strong);
+        }
+
+        .share-buttons .btn-share.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px var(--accent-glow-strong);
+        }
+
+        .share-buttons .btn-share .icon {
+            font-size: 1rem;
+        }
+
+        /* ============================================ */
+        /* RESET & FOOTER */
+        /* ============================================ */
+        .btn-reset {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-full);
+            padding: 10px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+            width: 100%;
+            margin: 14px 0 8px;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            transition: var(--transition);
+        }
+
+        .btn-reset:hover {
+            border-color: var(--accent-3);
+            color: var(--text-primary);
+            box-shadow: var(--shadow-md);
         }
 
         .footer {
             text-align: center;
-            color: var(--footer-text);
-            padding-top: 20px;
-            font-size: 0.8rem;
+            color: var(--text-muted);
+            padding-top: 12px;
+            font-size: 0.65rem;
             border-top: 1px solid var(--border-color);
-        }
-
-        .footer a {
-            color: var(--link-color);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        /* TOMBOL LOGIN ADMIN DI FOOTER */
-        .admin-login-btn {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 8px 20px;
-            background: var(--section-bg);
-            border: 1px solid var(--accent-purple);
-            border-radius: 40px;
-            color: var(--accent-purple-light);
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-decoration: none;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 0 #0a0a12;
-        }
-
-        .admin-login-btn:hover {
-            background: var(--accent-purple);
-            color: white;
-            border-color: var(--accent-purple-light);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 0 #0a0a12;
-        }
-
-        .admin-login-btn:active {
-            transform: translateY(2px);
-            box-shadow: 0 2px 0 #0a0a12;
-        }
-
-        .footer {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
+            gap: 6px;
         }
 
-        /* Loading indicator */
+        .footer a {
+            color: var(--accent-3);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .footer a:hover {
+            color: var(--accent-2);
+        }
+
+        .admin-login-btn {
+            display: inline-block;
+            padding: 4px 14px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-full);
+            color: var(--text-secondary);
+            font-size: 0.6rem;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 0.8px;
+            transition: var(--transition);
+        }
+
+        .admin-login-btn:hover {
+            border-color: var(--accent-3);
+            color: var(--text-primary);
+        }
+
+        /* ============================================ */
+        /* RESPONSIVE */
+        /* ============================================ */
+        @media (max-width: 600px) {
+            .container {
+                padding: 16px 14px 16px;
+                border-radius: var(--radius-lg);
+            }
+            
+            .main-title h1 {
+                font-size: 1.6rem;
+            }
+            
+            .total-meter {
+                grid-template-columns: 1fr 1fr;
+                gap: 6px;
+            }
+            
+            .total-grid {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            
+            .total-hero {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 12px 16px;
+            }
+            
+            .total-hero .value-wrap {
+                justify-content: flex-start;
+            }
+            
+            .total-hero .value {
+                font-size: 1.4rem;
+            }
+            
+            .total-inner {
+                padding: 14px 14px 16px;
+            }
+            
+            .result-value {
+                font-size: 1.5rem;
+            }
+            
+            .harga-value {
+                font-size: 1rem;
+            }
+            
+            .brand-text {
+                font-size: 1rem;
+            }
+            
+            .logo-wrapper {
+                width: 34px;
+                height: 34px;
+            }
+            
+            .section {
+                padding: 12px 12px 14px;
+                margin-bottom: 12px;
+            }
+            
+            .section-header .title span {
+                display: none;
+            }
+            
+            .harga-info {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 6px;
+            }
+            
+            .harga-value-box {
+                align-self: flex-start;
+            }
+            
+            .input-row {
+                flex-direction: column;
+                gap: 6px;
+            }
+            
+            .operator {
+                min-width: auto;
+                padding: 2px 0;
+            }
+            
+            .total-divider {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            
+            .header {
+                flex-wrap: wrap;
+            }
+            
+            .theme-toggle {
+                padding: 2px 3px 2px 10px;
+            }
+            
+            .info-desimal {
+                padding: 8px 12px;
+                font-size: 0.7rem;
+                flex-wrap: wrap;
+            }
+
+            .share-buttons {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .main-title h1 {
+                font-size: 1.3rem;
+            }
+            
+            .total-hero .value {
+                font-size: 1.2rem;
+            }
+            
+            .result-value {
+                font-size: 1.3rem;
+            }
+            
+            .harga-value {
+                font-size: 0.9rem;
+            }
+            
+            .container {
+                padding: 12px 10px 12px;
+            }
+            
+            .total-hero {
+                padding: 10px 14px;
+            }
+            
+            .total-card {
+                padding: 10px 12px;
+            }
+            
+            .total-card .value {
+                font-size: 1rem;
+            }
+
+            .total-meter-item .value {
+                font-size: 0.9rem;
+            }
+        }
+
         .loading-harga {
-            font-size: 0.8rem;
-            color: var(--accent-purple-light);
-            margin-left: 5px;
-            animation: blink 1.5s infinite;
+            font-size: 0.65rem;
+            color: var(--accent-3);
+            animation: pulse 1.5s ease-in-out infinite;
         }
 
-        @keyframes blink {
-            0% { opacity: 0.5; }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
             50% { opacity: 1; }
-            100% { opacity: 0.5; }
         }
 
-        @media (max-width: 500px) {
-            .total-result .value { font-size: 1.4rem; }
-            .pertamina-text { font-size: 1.3rem; }
-            .pertamina-logo-circle { width: 40px; height: 40px; }
-            .result-value { font-size: 1.8rem; }
-            .result-unit { font-size: 1.2rem; }
-            .harga-value { font-size: 1.3rem; }
-            .harga-info { flex-direction: column; align-items: flex-start; }
+        /* ============================================ */
+        /* STYLE UNTUK SCREENSHOT RINGKASAN SAJA */
+        /* ============================================ */
+        .summary-only {
+            background: var(--bg-container);
+            border-radius: var(--radius-lg);
+            padding: 20px 24px 24px;
+            border: 1px solid var(--border-color);
+            max-width: 480px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .summary-only .total-section {
+            margin: 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        .summary-only .total-section::before {
+            display: none;
+        }
+
+        .summary-only .total-inner {
+            padding: 16px 18px 18px;
+        }
+
+        .summary-only .total-header .badge-total {
+            display: none;
+        }
+
+        .summary-only .total-meter {
+            margin-bottom: 10px;
+        }
+
+        .summary-only .total-grid {
+            margin-bottom: 10px;
+        }
+
+        .summary-only .total-divider {
+            padding: 0px 0 8px;
+        }
+
+        .summary-only .total-hero {
+            padding: 12px 16px;
+        }
+
+        .summary-only .total-hero .value {
+            font-size: 1.4rem;
+        }
+
+        .summary-watermark {
+            text-align: center;
+            font-size: 0.55rem;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 1px;
+            opacity: 0.6;
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container" id="mainContainer">
+        <!-- HEADER -->
         <div class="header">
             <div class="logo-container">
-                <div class="pertamina-logo-circle">
+                <div class="logo-wrapper">
                     <img src="https://i.ibb.co.com/XfKBw6RH/pertamina-logo-circular-glossy-icon-with-transparent-background-free-png.png" 
                          alt="Pertamina Logo">
                 </div>
-                <span class="pertamina-text">PERTAMINA</span>
+                <span class="brand-text">Pertashop<span> Kalkulator</span></span>
             </div>
             <div class="theme-toggle">
                 <span class="toggle-label">Mode</span>
@@ -735,13 +1215,17 @@
             </div>
         </div>
         
-        <div class="subtitle">HITAM • PUTIH • UNGU ELEGAN</div>
+        <!-- JUDUL BESAR DI TENGAH -->
+        <div class="main-title">
+            <h1>STAA DEVELOPER</h1>
+            <div class="sub">Modern • Elegan • Presisi</div>
+        </div>
 
-        <!-- INFO HARGA DARI GITHUB -->
+        <!-- INFO HARGA -->
         <div class="harga-info">
             <div class="harga-label">
                 <span class="icon">⛽</span>
-                <span>Harga BBM per Liter</span>
+                <span>Harga BBM / L</span>
             </div>
             <div class="harga-value-box">
                 <span class="harga-value" id="hargaDisplay">12.500</span>
@@ -754,31 +1238,30 @@
         </div>
 
         <div class="info-desimal">
-            <span class="icon">⛽</span>
+            <span class="icon">📐</span>
             <span>
-                <strong>FORMAT DESIMAL:</strong> Gunakan koma (,) untuk desimal. Titik ribuan diabaikan.<br>
-                Contoh: 152,2  atau  1.234.567,89
+                <strong>Format Desimal:</strong> Gunakan koma (,) untuk desimal. Contoh: 152,2 atau 1.234.567,89
             </span>
         </div>
 
-        <!-- SECTION 1: PENGURANGAN PERTAMA -->
+        <!-- SECTION 1 -->
         <div class="section">
             <div class="section-header">
-                <span class="emoji">1️⃣</span>
-                <span class="title">METERAN TERJUAL</span>
+                <span class="badge-step">1</span>
+                <span class="title">Meteran Terjual <span>— Stand Akhir − Stand Awal</span></span>
             </div>
             <div class="input-row">
                 <div class="input-group">
                     <label>STAND AKHIR</label>
-                    <input type="text" id="kurang1_1" placeholder="cth: 1234567,89" value="">
+                    <input type="text" id="kurang1_1" placeholder="722312,6" value="">
                 </div>
                 <span class="operator">−</span>
                 <div class="input-group">
                     <label>STAND AWAL</label>
-                    <input type="text" id="kurang1_2" placeholder="cth: 276,1" value="">
+                    <input type="text" id="kurang1_2" placeholder="722078,8" value="">
                 </div>
             </div>
-            <button class="btn-hitung small" id="hitungKurang1">Hitung BBM Terjual</button>
+            <button class="btn-hitung" id="hitungKurang1">Hitung BBM Terjual</button>
             <div class="result-card">
                 <div class="result-label">BBM TERJUAL</div>
                 <div class="result-value-wrapper">
@@ -790,25 +1273,25 @@
         </div>
 
         <div class="link-arrow">
-            <span class="arrow">⤵️</span>
-            <span>DIPING ÷21</span>
-            <span class="arrow">⤵️</span>
+            <span class="arrow">⤵</span>
+            <span>DIPING ÷21,3</span>
+            <span class="arrow">⤵</span>
         </div>
 
-        <!-- SECTION 2: ÷21 -->
+        <!-- SECTION 2 -->
         <div class="section">
             <div class="section-header">
-                <span class="emoji">2️⃣</span>
-                <span class="title">HITUNG DIPING</span>
+                <span class="badge-step">2</span>
+                <span class="title">Hitung Diping <span>— BBM Terjual ÷ 21,3</span></span>
             </div>
             <div class="input-row">
                 <div class="input-group">
                     <label>BBM TERJUAL</label>
                     <input type="text" id="angkaBagi" readonly placeholder="otomatis" value="">
                 </div>
-                <span class="operator">÷21</span>
+                <span class="operator">÷21,3</span>
             </div>
-            <button class="btn-hitung small" id="hitungBagi">Hitung Diping</button>
+            <button class="btn-hitung" id="hitungBagi">Hitung Diping</button>
             <div class="result-card">
                 <div class="result-label">DIPING KELUAR</div>
                 <div class="result-value-wrapper">
@@ -819,21 +1302,21 @@
         </div>
 
         <div class="link-arrow">
-            <span class="arrow">⤵️</span>
+            <span class="arrow">⤵</span>
             <span>DIPING AKHIR</span>
-            <span class="arrow">⤵️</span>
+            <span class="arrow">⤵</span>
         </div>
 
-        <!-- SECTION 3: PENGURANGAN KEDUA -->
+        <!-- SECTION 3 -->
         <div class="section">
             <div class="section-header">
-                <span class="emoji">3️⃣</span>
-                <span class="title">DIPING AKHIR</span>
+                <span class="badge-step">3</span>
+                <span class="title">Diping Akhir <span>— Diping Awal − Pengurang</span></span>
             </div>
             <div class="input-row">
                 <div class="input-group">
                     <label>DIPING AWAL</label>
-                    <input type="text" id="angkaTetap" placeholder="cth: 2000000" value="">
+                    <input type="text" id="angkaTetap" placeholder="152,2" value="">
                 </div>
                 <span class="operator">−</span>
                 <div class="input-group">
@@ -841,7 +1324,7 @@
                     <input type="text" id="angkaPengurang" readonly value="">
                 </div>
             </div>
-            <button class="btn-hitung small" id="hitungKurang2">Hitung Diping Akhir</button>
+            <button class="btn-hitung" id="hitungKurang2">Hitung Diping Akhir</button>
             <div class="result-card">
                 <div class="result-label">HASIL DIPING AKHIR</div>
                 <div class="result-value-wrapper">
@@ -851,57 +1334,95 @@
             </div>
         </div>
 
-        <!-- TOTAL RUPIAH 3D -->
-        <div class="total-section">
-            <div class="total-header">
-                <span class="emoji">💰</span>
-                <span class="title">TOTAL PENJUALAN</span>
-            </div>
-            <div class="total-content">
-                <div class="total-row">
-                    <span class="total-label">BBM TERJUAL:</span>
-                    <div class="total-value-wrapper">
-                        <span class="total-value" id="totalAwal">0</span>
-                        <span class="total-unit">L</span>
+        <!-- TOTAL SECTION - RINGKASAN -->
+        <div class="total-section" id="summarySection">
+            <div class="total-inner">
+                <div class="total-header">
+                    <span class="emoji">💰</span>
+                    <span class="title">Ringkasan Penjualan</span>
+                    <span class="badge-total">✨ Detail</span>
+                </div>
+
+                <!-- METERAN AWAL & AKHIR -->
+                <div class="total-meter">
+                    <div class="total-meter-item">
+                        <div class="label">📊 Stand Awal</div>
+                        <div class="value" id="meterAwal">0 <small>L</small></div>
+                    </div>
+                    <div class="total-meter-item">
+                        <div class="label">📊 Stand Akhir</div>
+                        <div class="value" id="meterAkhir">0 <small>L</small></div>
                     </div>
                 </div>
-                <div class="total-kali">
-                    <span>×</span>
-                    <span>
-                        <span id="hargaKali">12.500</span>
-                        <span class="harga-unit">/L</span>
-                    </span>
+
+                <div class="total-grid">
+                    <div class="total-card">
+                        <div class="label">📦 BBM Terjual</div>
+                        <div class="value-wrap">
+                            <span class="value" id="totalAwal">0</span>
+                            <span class="unit">L</span>
+                        </div>
+                        <div class="sub-info">Dari stand meteran</div>
+                    </div>
+                    <div class="total-card accent">
+                        <div class="label">💜 Harga / Liter</div>
+                        <div class="value-wrap">
+                            <span class="value" id="hargaKali">12.500</span>
+                            <span class="unit">/L</span>
+                        </div>
+                        <div class="sub-info">Update dari PERTAMINA</div>
+                    </div>
                 </div>
-                <div class="total-result">
-                    <span class="label">TOTAL:</span>
-                    <div class="value-wrapper">
+
+                <div class="total-divider">
+                    <span class="line"></span>
+                    <span class="icon-multiply">×</span>
+                    <span class="harga-badge">
+                        <span id="hargaBadge">12.500</span>
+                        <span class="unit">/L</span>
+                    </span>
+                    <span class="line"></span>
+                </div>
+
+                <div class="total-hero">
+                    <span class="label">
+                        <span class="icon">🏦</span> Total Pendapatan
+                    </span>
+                    <div class="value-wrap">
                         <span class="value" id="totalAkhir">Rp 0</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <button class="btn-reset" id="resetBtn">⟲ KOSONGKAN SEMUA</button>
+        <!-- SHARE BUTTON - KHUSUS RINGKASAN -->
+        <div class="share-buttons">
+            <button class="btn-share primary" id="sharePNG">
+                <span class="icon">📸</span> Bagikan Ringkasan sebagai PNG
+            </button>
+        </div>
 
-        <!-- FOOTER DENGAN TOMBOL LOGIN ADMIN -->
+        <button class="btn-reset" id="resetBtn">⟲ Kosongkan Semua</button>
+
         <div class="footer">
-            <p>© 2026 <a href="#">STAA DEV</a> • VERSI PENGGUNA</p>
+            <p>© 2026 <a href="#">STAA DEV</a> • Versi Pengguna</p>
+            <a href="https://paneladmin.staa.workers.dev/login" class="admin-login-btn">🔐 Admin Login</a>
         </div>
     </div>
 
     <script>
         // ========== KONFIGURASI GITHUB ==========
-        // 🔴 GANTI DENGAN DATA REPO ANDA!
         const GITHUB_CONFIG = {
-            owner: 'staa-dev',           // Username GitHub Anda
-            repo: 'PS' // Nama repository
+            owner: 'staa-dev',
+            repo: 'PS'
         };
         
-        const ISSUE_NUMBER = 1; // Nomor issue yang berisi harga
+        const ISSUE_NUMBER = 1;
         
         // Elemen DOM
         const hargaDisplay = document.getElementById('hargaDisplay');
         const hargaKali = document.getElementById('hargaKali');
+        const hargaBadge = document.getElementById('hargaBadge');
         const hargaUpdate = document.getElementById('hargaUpdate');
         
         // Fungsi konversi string Indonesia ke number
@@ -945,10 +1466,9 @@
         }
 
         // === AMBIL HARGA DARI GITHUB ===
-        let HARGA = 12500; // default sementara
+        let HARGA = 12500;
         
         async function ambilHargaDariGitHub() {
-            // Update status loading
             if (hargaUpdate) {
                 hargaUpdate.innerHTML = '<span class="icon">🔄</span><span>Mengupdate...</span>';
             }
@@ -961,45 +1481,36 @@
                 }
                 
                 const data = await response.json();
-                
-                // Ambil harga dari body issue (format: "HARGA:12500")
                 const body = data.body || '';
                 const match = body.match(/HARGA:(\d+)/);
                 
                 if (match && match[1]) {
                     HARGA = parseInt(match[1]);
-                    console.log('Harga dari GitHub:', HARGA);
-                    
-                    // Update tampilan harga
                     const hargaFormatted = HARGA.toLocaleString('id-ID');
                     hargaDisplay.textContent = hargaFormatted;
                     hargaKali.textContent = hargaFormatted;
+                    hargaBadge.textContent = hargaFormatted;
                     
-                    // Update status dengan waktu update
                     if (data.updated_at) {
                         const tanggal = formatTanggal(data.updated_at);
                         hargaUpdate.innerHTML = `<span class="icon">✅</span><span>Update: ${tanggal}</span>`;
                     }
                     
-                    // Update total jika sudah ada perhitungan
                     updateTotalRupiah();
                 } else {
-                    console.log('Format HARGA tidak ditemukan, menggunakan default');
-                    hargaUpdate.innerHTML = '<span class="icon">⚠️</span><span>Menggunakan harga default</span>';
-                    
-                    // Tetap tampilkan default
+                    hargaUpdate.innerHTML = '<span class="icon">⚠️</span><span>Menggunakan default</span>';
                     const hargaFormatted = HARGA.toLocaleString('id-ID');
                     hargaDisplay.textContent = hargaFormatted;
                     hargaKali.textContent = hargaFormatted;
+                    hargaBadge.textContent = hargaFormatted;
                 }
             } catch (error) {
                 console.error('Gagal mengambil harga dari GitHub:', error);
-                hargaUpdate.innerHTML = `<span class="icon">❌</span><span>Gagal update: ${error.message}</span>`;
-                
-                // Tetap pakai default
+                hargaUpdate.innerHTML = `<span class="icon">❌</span><span>Gagal update</span>`;
                 const hargaFormatted = HARGA.toLocaleString('id-ID');
                 hargaDisplay.textContent = hargaFormatted;
                 hargaKali.textContent = hargaFormatted;
+                hargaBadge.textContent = hargaFormatted;
             }
         }
 
@@ -1021,6 +1532,8 @@
         const totalAwal = document.getElementById('totalAwal');
         const totalAkhir = document.getElementById('totalAkhir');
         const resetBtn = document.getElementById('resetBtn');
+        const meterAwal = document.getElementById('meterAwal');
+        const meterAkhir = document.getElementById('meterAkhir');
         
         // Theme toggle
         const themeToggle = document.getElementById('themeToggle');
@@ -1048,6 +1561,12 @@
             let total = nilaiAwal * HARGA;
             totalAwal.textContent = hasilKurang1.textContent;
             totalAkhir.textContent = formatRupiah(total);
+            
+            // Update meteran
+            let awal = parseAngkaIndonesia(kurang1_2.value);
+            let akhir = parseAngkaIndonesia(kurang1_1.value);
+            meterAwal.innerHTML = formatAngkaIndonesia(awal) + ' <small>L</small>';
+            meterAkhir.innerHTML = formatAngkaIndonesia(akhir) + ' <small>L</small>';
         }
 
         function hitungPengurangan1(updateLanjutan = true) {
@@ -1066,11 +1585,11 @@
 
         function hitungPembagian(updateLanjutan = true) {
             let nilai = parseAngkaIndonesia(angkaBagi.value);
-            let hasilBagiN = nilai / 21;
+            let hasilBagiN = nilai / 21.3;
             let fmtNilai = formatAngkaIndonesia(nilai);
             let fmtHasil = formatAngkaIndonesia(hasilBagiN);
             hasilBagi.textContent = fmtHasil;
-            detailBagi.textContent = (nilai !== 0) ? `${fmtNilai} ÷ 21 = ${fmtHasil}` : '—';
+            detailBagi.textContent = (nilai !== 0) ? `${fmtNilai} ÷ 21,3 = ${fmtHasil}` : '—';
             angkaPengurang.value = fmtHasil;
             if (updateLanjutan) hitungPengurangan2();
         }
@@ -1108,12 +1627,82 @@
             detailKurang2.textContent = '—';
             totalAwal.textContent = '0';
             totalAkhir.textContent = 'Rp 0';
+            meterAwal.innerHTML = '0 <small>L</small>';
+            meterAkhir.innerHTML = '0 <small>L</small>';
         });
 
-        // Panggil fungsi ambil harga saat halaman dimuat
+        // ========== FITUR SHARE PNG - KHUSUS RINGKASAN ==========
+        document.getElementById('sharePNG').addEventListener('click', function() {
+            const button = this;
+            const originalText = button.innerHTML;
+            button.innerHTML = '<span class="icon">⏳</span> Memproses...';
+            button.disabled = true;
+
+            // Ambil elemen ringkasan
+            const summaryElement = document.getElementById('summarySection');
+            
+            // Buat wrapper untuk screenshot
+            const wrapper = document.createElement('div');
+            wrapper.className = 'summary-only';
+            
+            // Clone ringkasan
+            const clone = summaryElement.cloneNode(true);
+            
+            // Hapus badge-total di clone
+            const badge = clone.querySelector('.badge-total');
+            if (badge) badge.style.display = 'none';
+            
+            // Tambahkan watermark
+            const watermark = document.createElement('div');
+            watermark.className = 'summary-watermark';
+            watermark.textContent = 'Powered by STAADEV • ' + new Date().toLocaleDateString('id-ID');
+            
+            wrapper.appendChild(clone);
+            wrapper.appendChild(watermark);
+            
+            // Tambahkan ke body untuk screenshot
+            wrapper.style.position = 'fixed';
+            wrapper.style.top = '-9999px';
+            wrapper.style.left = '0';
+            wrapper.style.zIndex = '9999';
+            wrapper.style.maxWidth = '480px';
+            wrapper.style.width = '100%';
+            document.body.appendChild(wrapper);
+            
+            // Tunggu sebentar agar ter-render
+            setTimeout(() => {
+                html2canvas(wrapper, {
+                    scale: 2,
+                    backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--bg-container').trim() || '#14141f',
+                    allowTaint: true,
+                    useCORS: true,
+                    logging: false,
+                    width: 480,
+                    onclone: function(doc) {
+                        // Pastikan semua elemen terlihat
+                    }
+                }).then(canvas => {
+                    // Buat link download
+                    const link = document.createElement('a');
+                    link.download = `Ringkasan_Pertamina_${new Date().toISOString().slice(0,10)}.png`;
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                    
+                    // Kembalikan state
+                    document.body.removeChild(wrapper);
+                    button.innerHTML = originalText;
+                    button.disabled = false;
+                }).catch(err => {
+                    console.error('Gagal screenshot:', err);
+                    document.body.removeChild(wrapper);
+                    button.innerHTML = originalText;
+                    button.disabled = false;
+                    alert('Gagal membuat screenshot. Silakan coba lagi.');
+                });
+            }, 300);
+        });
+
         ambilHargaDariGitHub();
-        
-        // Refresh harga setiap 30 detik
         setInterval(ambilHargaDariGitHub, 30000);
     </script>
 </body>
